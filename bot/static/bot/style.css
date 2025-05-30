@@ -74,6 +74,7 @@ body{
     max-width: 70%;
 }
 
+
 /**************************
  Chat Area Section 
 ****************************/
@@ -115,4 +116,49 @@ input{
     width: 80%;
     border-radius: 5px;
     padding: .5rem;
+}
+
+
+/********************* 
+Media Queries
+********************/
+
+@media screen and (max-width: 768px) {
+    .hidden{
+        display: none;
+        color:red;
+    }
+    .logo-img{
+        width: 50%;
+    }
+    .home{
+        width: 90%;
+    }
+    #chatbox {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+    .input-box{
+        width: 90vw;
+    }
+    input{
+        width: 100%;
+    }
+    .bot-response-msg{
+   
+    max-width: 90%;
+   
+}
+.user-request-msg{
+    background-color: #47b4fc;
+    color: white;
+    max-width: 70%;
+    padding: 1rem;
+    border-radius: 15px;
+    align-self: flex-end;
+}
+    
 }
