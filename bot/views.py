@@ -92,13 +92,15 @@ def find_best_coin_match(input_text):
     return best_match if score > 70 else None
 
 def format_coin_response(coin_data, coin_name):
-    """Format consistent coin responses"""
+    """Format with HTML line breaks for web display"""
     return JsonResponse({
         "response": (
-            f"{coin_name.upper()} - Trend: {coin_data['trend']}\n"
-            f"Verdict: {coin_data['verdict']}\n"
-            f"Advice: {coin_data['advice']}"
-        )
+            f"<strong>{coin_name.upper()}</strong><br>"
+            f"<span class='trend'>Trend: {coin_data['trend']}</span><br>"
+            f"<span class='verdict'>Verdict: {coin_data['verdict']}</span><br>"
+            f"<span class='advice'>Advice: {coin_data['advice']}</span>"
+        ),
+        "format": "html"  # Add this to indicate HTML formatting
     })
 
 def chat_with_bot(request):

@@ -1,0 +1,118 @@
+/* Importing Google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Quicksand:wght@300..700&family=WDXL+Lubrifont+TC&display=swap');
+
+/*
+******* Imported Fonts********** 
+ ------ font-family: "Outfit", sans-serif;
+ ------ font-family: "Quicksand", sans-serif;
+ ------ font-family: "WDXL Lubrifont TC", sans-serif;
+*/
+
+ 
+
+
+/* root styles */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+:root{
+    --primary-color: #ff5e00;
+    --secondary-color: #ca5b00;
+    --text-color: #f8f8f8;
+    --background-color:#0f0f0f;
+    --secondary-background-color: #1a1a1a;
+}
+
+
+body{
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Outfit', sans-serif;
+}
+
+.flex{
+    display: flex;
+    gap: 1rem;
+}
+.btn{
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+.gap-2{
+    gap: 2rem;
+}
+
+/* ****************************
+    landing Page Section 
+****************************** */
+
+.home{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 70%;
+    margin: 0 auto;
+    
+}
+.center{
+    align-items: center;
+    justify-content: center;
+}
+
+.main{
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-img{
+    max-width: 70%;
+}
+
+/**************************
+ Chat Area Section 
+****************************/
+.sm-logo{
+    height: 2rem;
+}
+#chatbox {
+    background-color: var(--secondary-background-color);
+    height: 70vh;
+    width: 80%;
+    border: 1px solid var(--primary-color);
+    border-radius: 15px;
+    overflow-y: scroll;
+    padding: 10px;
+    margin: 0 auto 10px;
+}
+.bot-response-msg{
+    background-color: var(--background-color);
+    color: white;
+    max-width: 50%;
+    padding: 1rem;
+    border-radius: 15px;
+}
+.user-request-msg{
+    background-color: #47b4fc;
+    color: white;
+    max-width: 50%;
+    padding: 1rem;
+    border-radius: 15px;
+    align-self: flex-end;
+}
+
+.input-box{
+    width: 70vw;
+    margin: 0 auto;
+}
+input{
+    border: none;
+    width: 80%;
+    border-radius: 5px;
+    padding: .5rem;
+}
