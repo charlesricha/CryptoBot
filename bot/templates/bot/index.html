@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crypto Chat Bot</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <h1>Crypto-AI</h1>
+    <div id="chatbox"></div>
+    <input type="text" id="userInput" placeholder="Type your message...">
+    <button onclick="sendMessage()">Send</button>
+
+    <script>
+        const chatbox = document.getElementById('chatbox');
+        const userInput = document.getElementById('userInput');
+        
+        function addMessage(sender, message) {
+            // chatbox.innerHTML += `<p><strong>${sender}:</strong> ${message}</p>`;
+            chatbox.scrollTop = chatbox.scrollHeight;
+
+            if (sender === 'Bot') {
+                const botResponse = document.createElement('p');
+                botResponse.className = 'bot-response-msg';
+                botResponse.innerHTML = `<strong>${sender}:</strong> ${message}`;
+                chatbox.appendChild(botResponse);
+            }
+            else {
+                const userMessage = document.createElement('p');
+                userMessage.className = 'user-request-msg';
+                userMessage.innerHTML = `<strong>${sender}:</strong> ${message}`;
+                chatbox.appendChild(userMessage);
+            }
+        }
+        
+        function sendMessage() {
+            const message = userInput.value.trim();
+            if(message) {
+                addMessage('You', message);
+                userInput.value = '';
+                
+                fetch(`/chat/?message=${encodeURIComponent(message)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        addMessage('Bot', data.response);
+                    });
+            }
+        }
+        
+        // Allow sending with Enter key
+        userInput.addEventListener('keypress', function(e) {
+            if(e.key === 'Enter') sendMessage();
+        });
+        
+        // Initial bot message
+        addMessage('Bot', "Hey there! Ask me about crypto or just say hello!");
+    </script>
+</body>
+<script src="script.js"></script>
+
+</html>
