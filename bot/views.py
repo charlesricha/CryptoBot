@@ -2,6 +2,9 @@ from django.http import JsonResponse
 from django.shortcuts import render
 import random
 from fuzzywuzzy import process
+from .crypto_db import crypto_db as CRYPTO_DB
+from .commands_for_role3 import profitability_keywords, sustainability_keywords
+# views.py
 
 # ======================
 # RESPONSE DATABASE
@@ -103,42 +106,42 @@ def format_coin_response(coin_data, coin_name):
         "format": "html"  # Add this to indicate HTML formatting
     })
 
-def chat_with_bot(request):
+def chat_with_bot(request, user_input):
     """
     Handle general chat messages
     Example: /chat/?message=hello
     """
     if request.method != 'GET':
         return JsonResponse({"response": "Send me a GET request with your message!"})
-    
+
     user_input = request.GET.get('message', '').lower()
     conversation_db = RESPONSE_DB["conversation"]
-    
+
     # 1. First check greetings
     for greeting in conversation_db["greetings"]:
         if greeting in user_input:
             return JsonResponse({
                 "response": random.choice(conversation_db["greetings"][greeting])
             })
-    
+
     # 2. Check how are you
     if 'how are you' in user_input:
         return JsonResponse({
             "response": random.choice(conversation_db["how_are_you"])
         })
-    
+
     # 3. Check compliments/thanks
     for compliment in conversation_db["compliments"]:
         if compliment in user_input:
             return JsonResponse({
                 "response": random.choice(conversation_db["compliments"][compliment])
             })
-    
+
     # 4. Try exact crypto match
     if user_input in RESPONSE_DB["crypto"]:
         coin = RESPONSE_DB["crypto"][user_input]
         return format_coin_response(coin, user_input)
-    
+
     # 5. Check for natural language questions with fuzzy matching
     question_triggers = ["what about", "tell me about", "how about", "what's", "info on"]
     for trigger in question_triggers:
@@ -148,13 +151,41 @@ def chat_with_bot(request):
             if best_match:
                 coin = RESPONSE_DB["crypto"][best_match]
                 return format_coin_response(coin, best_match)
-    
+
     # 6. Try fuzzy matching on the entire input
     best_match = find_best_coin_match(user_input)
     if best_match:
         coin = RESPONSE_DB["crypto"][best_match]
         return format_coin_response(coin, best_match)
-    
+
+    # 6.5 Handle profitability queries
+    if any(word in user_input for word in profitability_keywords):
+        profitable_coins = [coin for coin, data in CRYPTO_DB.items()
+                            if data["price_trend"] == "rising" and data["market_cap"] == "high"]
+        if profitable_coins:
+            pick = profitable_coins[0]
+            return JsonResponse({
+                "response": f"🔥 {pick} is the most profitable crypto option right now! 🚀"
+            })
+        else:
+            return JsonResponse({
+                "response": "No top profitable options at the moment — markets move fast! 📉"
+            })
+
+    # 6.6 Handle sustainability queries
+    if any(word in user_input for word in sustainability_keywords):
+        sustainable_coins = [coin for coin, data in CRYPTO_DB.items()
+                             if data["energy_use"] == "low" and data["sustainability_score"] > 0.7]
+        if sustainable_coins:
+            pick = sustainable_coins[0]
+            return JsonResponse({
+                "response": f"🌿 {pick} is the most sustainable option! Great for long-term growth and the planet! 🌍"
+            })
+        else:
+            return JsonResponse({
+                "response": "Couldn’t find a green-friendly coin right now — crypto can be rough on the environment! 😅"
+            })
+
     # 7. Default fallback
     return JsonResponse({
         "response": random.choice(conversation_db["default"])
