@@ -10,7 +10,7 @@ Crypto Bot is a simple Django-based chatbot that provides advice and basic infor
 - [📁 Project Structure](#-project-structure)
 - [🛠️ Installation and Setup](#️-installation-and-setup)
 - [💡 How It Works](#-how-it-works)
-- [📷 Screenshots (Optional)](#-screenshots-optional)
+- [📷 Screenshots ](#-screenshots-optional)
 - [📈 Future Improvements](#-future-improvements)
 - [👥 Contributors](#-contributors)
 - [📄 License](#-license)
@@ -48,30 +48,33 @@ crypto_bot/
 ```
 ## 🛠️ Installation and Setup
 
-    Clone the repository
+- Clone the repository
 
 ```bash
 git clone https://github.com/yourusername/crypto-bot.git
 cd crypto-bot
 ```
-Create a virtual environment and activate it
-
+- Create a virtual environment and activate it
+```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+- Install dependencies
 
-Install dependencies
-
+```bash
 pip install django
+```
 
-Run migrations and start the server
-
+- Run migrations and start the server
+```bash
     python manage.py migrate
     python manage.py runserver
+```
+- Visit the bot
 
-    Visit the bot
-
-    Open your browser and go to http://127.0.0.1:8000/ to interact with Crypto Bot.
-
+```bash
+Open your browser and go to http://127.0.0.1:8000/ to interact with Crypto Bot.
+```
 💡 How It Works
 
     When a user types a message into the input field, it's sent to the Django backend.
@@ -82,34 +85,40 @@ Run migrations and start the server
 
     If no match is found, a default message is shown.
 
-📷 Screenshots (Optional)
+## 📷 Screenshots
 
-Add screenshots of the interface here if available.
-📈 Future Improvements
+<img src="" alt="screenshot.png">
 
-    Integrate an AI model or external crypto news API.
+## 📈 Future Improvements
 
-    Add authentication so users can save past conversations.
+   -  Integrate an AI model or external crypto news API.
 
-    Improve UI with CSS frameworks like Tailwind or Bootstrap.
+   -  Add authentication so users can save past conversations.
 
-    Add more keywords and responses for broader coverage.
+   - Improve UI with CSS frameworks like Tailwind or Bootstrap.
 
-👥 Contributors
+   - Add more keywords and responses for broader coverage.
 
-Thank you to all the amazing people who have contributed to this project:
-Name	GitHub Profile	Contributions
-Your Name	@yourusername	Project creator, core logic, design
+## 👥 Contributors
 
-You can be listed here too! Feel free to fork the repo, make changes, and open a pull request.
-📄 License
+- Thank you to all the amazing people who have contributed to this project:
+  
+Name	                   GitHub Profile               Contributions
+Charles Muthui             <a href="https://github.com/charlesricha/">@charlesricha</a>           Project creator, core logic, design
+Karen Mumbi                 <a href="https://github.com/preciusmumbi/">@charlesricha</a>          Bot Cypto data analyzer
 
-This project is open-source and available under the MIT License.
-🙋‍♂️ Author
+- You can be listed here too! Feel free to fork the repo, make changes, and open a pull request.
 
-Crypto Bot by [Your Name]
+## 📄 License
+
+- This project is open-source and available under the MIT License.
+- 
+## 🙋‍♂️ Author
+
+Crypto Bot by [Charles Muthui]
 Feel free to reach out with questions or contributions.
 
-GitHub | LinkedIn | Email
+LET's Connect:
+LinkedIn - <a href="[https://www.linkedin.com/in//muthui-charles](https://www.linkedin.com/in//muthui-charles)"></a>
 
 
