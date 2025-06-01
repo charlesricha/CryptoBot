@@ -105,6 +105,7 @@ Open your browser and go to http://127.0.0.1:8000/ to interact with Crypto Bot.
   
 Name	                   GitHub Profile               Contributions
 Charles Muthui             <a href="https://github.com/charlesricha/">@charlesricha</a>           Project creator, core logic, design
+</br>
 Karen Mumbi                 <a href="https://github.com/preciusmumbi/">@charlesricha</a>          Bot Cypto data analyzer
 
 - You can be listed here too! Feel free to fork the repo, make changes, and open a pull request.
