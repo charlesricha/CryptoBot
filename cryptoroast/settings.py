@@ -30,9 +30,10 @@ STATICFILES_DIRS = [
 SECRET_KEY = 'django-insecure-mx$q&835kirx#4we+jyvw27!d$%bt-m@0newdx=pd3#v_ddn#q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['cryptobot-3.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['cryptobot-3.onrender.com','cryptobot-1-96mu.onrender.com','', 'localhost', '127.0.0.1']
 
 
 

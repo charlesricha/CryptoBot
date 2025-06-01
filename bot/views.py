@@ -3,7 +3,7 @@ from django.shortcuts import render
 import random
 from fuzzywuzzy import process
 from .crypto_db import crypto_db as CRYPTO_DB
-from .commands_for_role3 import profitability_keywords, sustainability_keywords
+# from .commands_for_role3 import profitability_keywords, sustainability_keywords
 # views.py
 
 # ======================
@@ -106,7 +106,7 @@ def format_coin_response(coin_data, coin_name):
         "format": "html"  # Add this to indicate HTML formatting
     })
 
-def chat_with_bot(request, user_input):
+def chat_with_bot(request):
     """
     Handle general chat messages
     Example: /chat/?message=hello
